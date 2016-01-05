@@ -12,4 +12,12 @@ describe('Thermostat', function() {
     });
   });
 
+  describe('#increaseTemperature', function() {
+    it('increment temperature by 1 degree', function() {
+      var temperature = thermostat.temperature;
+      thermostat.increaseTemperature();
+      expect(thermostat.temperature).toEqual(temperature + 1);
+    });
+  });
+
 });
