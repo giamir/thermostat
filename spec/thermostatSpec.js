@@ -20,4 +20,12 @@ describe('Thermostat', function() {
     });
   });
 
+  describe('#decreaseTemperature', function() {
+    it('decrease temperature by 1 degree', function() {
+      var temperature = thermostat.temperature;
+      thermostat.decreaseTemperature();
+      expect(thermostat.temperature).toEqual(temperature - 1);
+    });
+  });
+
 });
