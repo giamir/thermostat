@@ -26,6 +26,11 @@ describe('Thermostat', function() {
       thermostat.decreaseTemperature();
       expect(thermostat.temperature).toEqual(temperature - 1);
     });
+    it('throw an error temperature is set to min', function() {
+      thermostat.temperature = MIN_TEMPERATURE;
+      var msg = 'Unable to decrease temperature cause is already set to min';
+      expect( function(){ thermostat.decreaseTemperature(); } ).toThrowError(msg);
+    });
   });
 
 });
