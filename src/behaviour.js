@@ -21,6 +21,7 @@ $(document).click(function() {
 
 $(document).ready(function() {
 
+  refreshWeather();
   refreshTemperature();
   refreshPowerSavingStatus();
 
