@@ -17,21 +17,25 @@ Thermostat.prototype.getCurrentTemperature = function () {
 };
 
 Thermostat.prototype.increaseTemperature = function() {
+  this._clearError();
   if(this._isMaxTemperature()) throw new TypeError(this.ERROR_MSG);
   this.temperature++;
 };
 
 Thermostat.prototype.decreaseTemperature = function() {
+  this._clearError();
   if(this._isMinTemperature()) throw new TypeError(this.ERROR_MSG);
   this.temperature--;
 };
 
 Thermostat.prototype.switchPowerMode = function () {
+  this._clearError();
   if(this._isTempNeedAdjustment()){this.temperature = this.MAX_SAVING_MODE_TEMP;}
   this.isPowerSavingModeOn = !this.isPowerSavingModeOn;
 };
 
 Thermostat.prototype.resetTemperature = function () {
+  this._clearError();
   this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
@@ -42,18 +46,18 @@ Thermostat.prototype.energyUsageStatus = function () {
 };
 
 Thermostat.prototype._isMinTemperature = function() {
-  this.ERROR_MSG = 'Unable to decrease temperature cause is already set to min';
+  if (this.temperature <= this.MIN_TEMPERATURE) {this.ERROR_MSG = 'Unable to decrease temperature cause is already set to min';}
   return this.temperature <= this.MIN_TEMPERATURE;
 };
 
 Thermostat.prototype._isMaxTemperature = function () {
   if(this.isPowerSavingModeOn){
-    this.ERROR_MSG = 'Unable to increase temperature because power saving mode is on';
+    if(this.temperature >= this.MAX_SAVING_MODE_TEMP) {this.ERROR_MSG = 'Unable to increase temperature because power saving mode is on';}
     return this.temperature >= this.MAX_SAVING_MODE_TEMP;
 
   }
   else {
-    this.ERROR_MSG = 'Unable to increase temperature because maxmimum temperature reached';
+    if(this.temperature >= this.MAX_TEMPERATURE) {this.ERROR_MSG = 'Unable to increase temperature because maxmimum temperature reached';}
     return this.temperature >= this.MAX_TEMPERATURE;
   }
   return false;
@@ -61,4 +65,8 @@ Thermostat.prototype._isMaxTemperature = function () {
 
 Thermostat.prototype._isTempNeedAdjustment = function () {
   return this.isPowerSavingModeOn === false && this.temperature > this.MAX_SAVING_MODE_TEMP;
+};
+
+Thermostat.prototype._clearError = function () {
+  this.ERROR_MSG = ''
 };
