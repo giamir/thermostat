@@ -2,6 +2,7 @@ var thermostat = new Thermostat();
 
 function refreshTemperature() {
   $('#temperature').text(thermostat.getCurrentTemperature());
+  $('#temperature').attr('class', thermostat.energyUsageStatus());
 }
 function refreshPowerSavingStatus() {
   var powerSavingStatus = 'off';
