@@ -14,30 +14,28 @@
   </head>
 
   <body>
-    <div id='notice'></div>
-    <div class="outer">
-      <div class="middle">
-        <div class="inner">
-          <section id="thermostat" class="outer">
-            <img id="current-background" />
-            <img id="next-background" />
-              <div class="middle">
-                <div class="inner">
-                  <h1 id="temperature"></h1>
-                </div>
+    <section id='control-bar'>
+      <section id="thermostat" class="outer">
+        <img id="current-background" />
+        <img id="next-background" />
+          <div class="middle">
+            <div class="inner">
+              <h1 id="temperature"></h1>
             </div>
-              <button id="temperature-increase" class="icon"><i class="fa fa-angle-up w3-text-teal" style="font-size:50px"></i></button>
-              <button id="temperature-decrease" class="icon"><i class="fa fa-angle-down w3-text-teal" style="font-size:50px"></i></button>
-              <button id="temperature-reset" class="text">reset</button>
-              <button id="powersaving-switch" class="text">mode</button>
-              <div id="powersaving-status"></div>
-            <!-- <p>
-              power saving mode is <span id="power-saving-status"></span>
-            </p> -->
-          </section>
         </div>
-      </div>
-    </div>
+          <button id="temperature-increase" class="icon"><i class="fa fa-angle-up w3-text-teal" style="font-size:40px"></i></button>
+          <button id="temperature-decrease" class="icon"><i class="fa fa-angle-down w3-text-teal" style="font-size:40px"></i></button>
+          <button id="temperature-reset" class="text">reset</button>
+          <button id="powersaving-switch" class="text">mode</button>
+          <div id="powersaving-status"></div>
+      </section>
+  </section>
+  <section id='outcast-info'>
+    <h1 class="temperature"><span id="outside-temperature"></span> °C</h1>
+    <h3 id="city"></h3>
+    <h3 id="weather"></h3>
+  </section>
+  <div class="overlay"></div>
   </body>
 
 </html>

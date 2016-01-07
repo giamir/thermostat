@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
+  var coords;
+  var weather;
+
   var thermostat = new Thermostat();
   var currentEnergyUsageStatus;
 
-  // refreshWeather();
+  refreshWeather();
   refreshTemperature();
   refreshEnergyUsageStatus();
   refreshPowerSavingStatus();
@@ -13,7 +16,6 @@ $(document).ready(function() {
     refreshEnergyUsageStatus();
     refreshPowerSavingStatus();
     refreshAvailableActions();
-    printNotice();
    });
 
   $('#temperature-increase').click(function() {
