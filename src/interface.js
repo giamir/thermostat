@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   var coords;
   var weather;
+  var url_image;
 
   var thermostat = new Thermostat();
   var currentEnergyUsageStatus;
